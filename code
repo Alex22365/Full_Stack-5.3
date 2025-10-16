@@ -1,0 +1,64 @@
+// main.js
+
+// Simulated E-commerce Catalog using nested document structure (MongoDB-like)
+
+const express = require("node:http"); // Dummy import not needed, Programiz runs Node automatically
+
+// Simulated product data (like MongoDB documents)
+let products = [
+  {
+    _id: "1",
+    name: "Smartphone",
+    price: 600,
+    category: "Electronics",
+    variants: [],
+  },
+  {
+    _id: "2",
+    name: "Running Shoes",
+    price: 120,
+    category: "Footwear",
+    variants: [
+      { color: "Red", size: "8", stock: 50 },
+      { color: "Blue", size: "9", stock: 30 },
+    ],
+  },
+  {
+    _id: "3",
+    name: "T-shirt",
+    price: 25,
+    category: "Apparel",
+    variants: [
+      { color: "Black", size: "M", stock: 100 },
+      { color: "White", size: "L", stock: 60 },
+    ],
+  },
+];
+
+// ✅ 1. Get all products
+function getAllProducts() {
+  console.log("✅ All Products:");
+  console.log(JSON.stringify(products, null, 2));
+}
+
+// ✅ 2. Filter by category
+function getProductsByCategory(category) {
+  const result = products.filter((p) => p.category === category);
+  console.log(\n✅ Products in category: ${category});
+  console.log(JSON.stringify(result, null, 2));
+}
+
+// ✅ 3. Filter by variant color
+function getProductsByColor(color) {
+  const result = products.filter((p) =>
+    p.variants.some((v) => v.color === color)
+  );
+  console.log(\n✅ Products with color: ${color});
+  console.log(JSON.stringify(result, null, 2));
+}
+
+// ✅ Simulated Execution (like Postman calls)
+console.log("🚀 Simulating E-commerce Catalog Operations...\n");
+getAllProducts();
+getProductsByCategory("Electronics");
+getProductsByColor("Blue");
